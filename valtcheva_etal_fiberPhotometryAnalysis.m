@@ -83,12 +83,12 @@ subplot(414); plot(time, F490, 'g');
 title('signal');
 xlabel('Time (s)');
 
-%% compare pre, during, and post each pupcall barrage
-bi=find(diff([0 allstim])>10000);                                          % find the beginning of each barrage of pupcalls 
-prei=allstim(bi);                                                          % index of barrage start
-posti=allstim([bi(2:end)-1 end]);                                          % index of barrage end
-pre=round([prei'-(20*sr) prei']);                                          % pre barrage start (20s)
-post=round([posti' posti'+(40*sr)]);                                       % post barrage start (40s - bc of variable time btwn barrages)
+%% compare pre, during, and post each pup call set
+bi=find(diff([0 allstim])>10000);                                          % find the beginning of each set of pup calls 
+prei=allstim(bi);                                                          % index of set start
+posti=allstim([bi(2:end)-1 end]);                                          % index of set end
+pre=round([prei'-(20*sr) prei']);                                          % pre set start (20s)
+post=round([posti' posti'+(40*sr)]);                                       % post set start (40s - bc of variable time btwn sets)
 
 for j=1:numel(prei)
     
@@ -107,7 +107,7 @@ for j=1:numel(prei)
     dfmax(j,2)=max(df(pre(j,2):post(j,1),:));                              % "call"
     dfmax(j,3)=max(df(post(j,1):post(j,2),:));                             % "post"
     
-    bl=(df(pre(j,1):pre(j,2),:));                                          % baseline to zscore pre every barrage
+    bl=(df(pre(j,1):pre(j,2),:));                                          % baseline to zscore pre every set
     % zscore mean
     zsmean(j,1)=mean((df(pre(j,1):pre(j,2),:)-mean(bl))./std(bl));         
     zsmean(j,2)=mean((df(pre(j,2):post(j,1),:)-mean(bl))./std(bl));
@@ -131,7 +131,7 @@ A(allstim,:)=1;
 csvwrite([location animal '_' date '_df'],[time',df.*100,zs_df,F405,F490,A]);
 
 % currently only writing out df and zscore mean - can include other things computed above
-if numel(prei)>5                                                           % only consider the first 5 barrages (based on PIL data)
+if numel(prei)>5                                                           % only consider the first 5 sets
     csvwrite([location animal '_' date '_dfmean'],dfmean(1:5,:));   
     csvwrite([location animal '_' date '_zsmean'],zsmean(1:5,:));
 else
