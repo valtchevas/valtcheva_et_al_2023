@@ -1,11 +1,11 @@
 clear all;clc;
 %%%% change locations
-basepath = 'E:\Business and friend work\Robert Fromeki\Fiber photometry Analysis-20220929T192359Z-001\Fiber photometry Analysis\FP files'; 
+basepath = 'E:\Fiber_Photometry_Analysis\FP_files'; 
 cd(basepath)
 
 %% path to folder
 files = dir(basepath);
-rmpath('C:\Users\yiyao\Documents\MATLAB\chronux_2_12\spectral_analysis\continuous'); %% find where is your chronux_2_12 toolbox
+rmpath('C:\Users\XX\Documents\MATLAB\chronux_2_12\spectral_analysis\continuous'); %% find where is your chronux_2_12 toolbox
 
 for ii = 3:length(files)
     cd([basepath,'\',files(ii).name]);
