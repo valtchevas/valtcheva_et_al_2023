@@ -1,5 +1,5 @@
 clear all;clc;
-basepath = 'E:\Business and friend work\Robert Fromeki\FP files-20221002T150414Z-001\FP files';
+basepath = 'E:\Fiber_Photometry_Analysis\FP_files';
 cd(basepath)
 %% path to folder
 files = dir(basepath);
