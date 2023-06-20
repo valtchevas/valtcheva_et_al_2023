@@ -1,5 +1,6 @@
 # valtcheva_et_al_2023
 fiber photometry code from valtcheva et al (2023)
+
 0.	Organizing data: Create a path ending in a folder representing one experiment type that contains subfolders (each of which should contain a single .mat file with raw photometry data from one experiment). This path should be assigned to the ‘basepath’ variable found in all codes in this folder.
     •	Note on example file format:
     - .mat files produced by TDT Synapse
