@@ -1,8 +1,0 @@
-README
-file format: 
-  .mat files produced by TDT Synapse 
-  data should be in a structure so each channel is stored separately 
-    signal data is stored in data.Ca
-    control data is stored in data.iso 
-    stimulus data is stored in data.input
-  sampling rate for this dataset is 1017.25 Hz 
